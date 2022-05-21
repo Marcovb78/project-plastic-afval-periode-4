@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
-use App\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UsersTableSeeder extends Seeder
 {
@@ -19,7 +21,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Jord Kuijer',
             'email' => 'jordkuijer@gmail.com',
             'password' => Hash::make('password'),
-            'remember_token' => str_random(10),
+            'remember_token' => Str::random(10),
         ]);
     }
 }
