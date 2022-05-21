@@ -10,6 +10,6 @@
     <title>Jord heeft een groot voorhoofd.</title>
 </head>
 <body>
-    <div class="columns-2"></div>
+    
 </body>
 </html>
