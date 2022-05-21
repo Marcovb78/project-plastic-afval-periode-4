@@ -21,7 +21,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="container mx-auto bg-gray-800" id="app">
+    <div class="mx-auto" id="app" style="max-width: 500px; background-color: #3E8EDE; height:150vh;">
         @include('shared.header')
 
         <main class="py-4">
