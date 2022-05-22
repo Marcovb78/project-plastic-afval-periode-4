@@ -3,13 +3,13 @@
 @section('title', 'Mijn feed')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-32">
         <div class="flex justify-center">
             <div class="rounded-full bg-white px-6 py-1">
                 <span class="wcd-pink font-bold">Feed</span>
             </div>
         </div>
-        <div class="flex flex-col justify-center mt-20">
+        <div class="flex flex-col justify-center">
             @foreach($activities as $activity)
                 <div class="bg-white rounded-lg flex flex-col m-6 mb-4 p-4">
                     <div class="text-left">
@@ -21,6 +21,9 @@
                         </div>
                         <div class="ml-5">
                             <p>{!! $activity->description !!}</p>
+                        </div>
+                        <div class="ml-3">
+                            <img src="/images/icons/trophy-active.svg" height="100" width="100" alt="">
                         </div>
                     </div>
                     <div class="text-right text-gray-500 m-4">
