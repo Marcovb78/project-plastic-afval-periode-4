@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('longitude');
             $table->string('latitude');
             $table->text('image')->nullable();
-            $table->timestamp('from_date');
-            $table->timestamp('to_date');
+            $table->timestamp('from_date')->nullable();
+            $table->timestamp('to_date')->nullable();
             $table->timestamps();
         });
     }

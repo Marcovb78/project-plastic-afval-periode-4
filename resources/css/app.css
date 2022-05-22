@@ -15,23 +15,29 @@
 }
 
 body {
-    overflow: hidden;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    overflow-y: scroll; 
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 #app {
     max-width: 500px; 
-    background-color: var(--blue); 
-    height: 200vh;
+    background-color: var(--blue);
+    min-height: 150vh;
 }
 
 .wcd-blue {
-    color: #3E8EDE;
+    color: var(--blue);
 }
 
 .wcd-pink {
-    color: #EC5BAA;
+    color: var(--pink);
 }
 
 .wcd-yellow {
-    color: #EAC43D;
+    color: var(--yellow);
 }

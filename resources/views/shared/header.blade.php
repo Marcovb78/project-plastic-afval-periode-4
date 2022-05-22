@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-white sticky" style="background-color:#3E8EDE;">
+<nav class="navbar navbar-light bg-white fixed w-full drop-shadow-md" style="background-color:#3E8EDE;">
     <div class="flex">
         <a class="navbar-brand m-4" href="{{ route('feed.show') }}">
             <img src="/images/wcd-logo.png" width="110" alt="">
