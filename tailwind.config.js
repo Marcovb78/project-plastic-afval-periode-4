@@ -1,9 +1,7 @@
 module.exports = {
-  content: [
-      "./resources/views/**/*.blade.php",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+    content: [
+        "./resources/views/**/*.blade.php",
+    ],
+    theme: {},
+    plugins: [],
 }

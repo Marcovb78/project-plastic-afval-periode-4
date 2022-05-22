@@ -15,4 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\FeedController::class, 'index'])->name('feed.show');
+
+Route::get('/events/map', [App\Http\Controllers\EventsController::class, 'showMap'])->name('events.map');
+
+Route::get('/profile', [App\Http\Controllers\UserController::class, 'showProfile'])->name('user.profile');
