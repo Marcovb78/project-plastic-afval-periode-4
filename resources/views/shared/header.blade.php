@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light bg-white sticky" style="background-color:#3E8EDE;">
     <div class="flex">
-        <a class="navbar-brand m-4" href="{{ url('/') }}">
-            <img src="images/wcd-logo.png" width="110" alt="">
+        <a class="navbar-brand m-4" href="{{ route('feed.show') }}">
+            <img src="/images/wcd-logo.png" width="110" alt="">
         </a>
 
         <div class="ml-auto">
@@ -28,7 +28,7 @@
                 @else
                     <li>
                         <a href="/">
-                            <img src="images/profile-picture.jpg" class="m-5 rounded-full" width="75" height="75" alt="">
+                            <img src="/images/profile-picture.jpg" class="m-5 rounded-full" width="75" height="75" alt="">
                         </a>
                     </li>
                 @endguest

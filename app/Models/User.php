@@ -41,4 +41,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function activities()
+    {
+        return $this->hasMany(\Spatie\Activitylog\Models\Activity::class, 'subject_id');
+    }
 }

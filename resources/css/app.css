@@ -23,3 +23,15 @@ body {
     background-color: var(--blue); 
     height: 200vh;
 }
+
+.wcd-blue {
+    color: #3E8EDE;
+}
+
+.wcd-pink {
+    color: #EC5BAA;
+}
+
+.wcd-yellow {
+    color: #EAC43D;
+}
