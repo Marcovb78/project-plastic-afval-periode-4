@@ -22,8 +22,8 @@
                         <div class="ml-5">
                             <p>{!! $activity->description !!}</p>
                         </div>
-                        <div class="ml-3">
-                            <img src="/images/icons/trophy-active.svg" height="100" width="100" alt="">
+                        <div>
+                            <img src="/images/icons/trophy-active.svg" height="90" width="90" alt="">
                         </div>
                     </div>
                     <div class="text-right text-gray-500 m-4">
