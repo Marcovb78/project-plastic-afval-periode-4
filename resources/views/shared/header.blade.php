@@ -27,7 +27,7 @@
                     @endif
                 @else
                     <li>
-                        <a href="/">
+                        <a href="{{ route('user.profile') }}">
                             <img src="/images/profile-picture.jpg" class="m-5 rounded-full" width="75" height="75" alt="">
                         </a>
                     </li>

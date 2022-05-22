@@ -17,11 +17,20 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Show the profile page.
+     */
     public function showProfile()
     {
-        $user = auth()->user();
-
         return view('users.profile');
+    }
+
+    /**
+     * Show profile settings page.
+     */
+    public function showSettings()
+    {
+        return view('users.settings');
     }
 
 }
