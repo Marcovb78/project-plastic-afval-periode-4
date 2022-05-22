@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-white" style="background-color:#3E8EDE;">
+<nav class="navbar navbar-light bg-white sticky" style="background-color:#3E8EDE;">
     <div class="flex">
         <a class="navbar-brand m-4" href="{{ url('/') }}">
             <img src="images/wcd-logo.png" width="110" alt="">
@@ -27,7 +27,9 @@
                     @endif
                 @else
                     <li>
-                        <img src="images/profile-picture.jpg" class="m-5 rounded-full" width="75" height="75" alt="">
+                        <a href="/">
+                            <img src="images/profile-picture.jpg" class="m-5 rounded-full" width="75" height="75" alt="">
+                        </a>
                     </li>
                 @endguest
             </ul>

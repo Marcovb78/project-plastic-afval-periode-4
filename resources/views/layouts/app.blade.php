@@ -14,14 +14,16 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     @stack('styles')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="mx-auto" id="app" style="max-width: 500px; background-color: #3E8EDE; height:150vh;">
+    <div class="mx-auto" id="app">
         @include('shared.header')
 
         <main class="py-4">

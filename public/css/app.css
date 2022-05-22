@@ -43,7 +43,6 @@ html {
 body {
   margin: 0; /* 1 */
   line-height: inherit; /* 2 */
-  overflow: hidden;
 }
 
 /*
@@ -464,6 +463,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .relative {
   position: relative;
 }
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
 .bottom-0 {
   bottom: 0px;
 }
@@ -552,3 +555,24 @@ Ensure the default browser behavior of the `hidden` attribute.
   vertical-align: baseline;
 }
 
+
+:root {
+    --pink: #EC5BAA;
+    --blue: #3E8EDE;
+    --yellow: #EAC43D;
+    --font: 'Lato', sans-serif; 
+}
+
+* {
+    font-family: var(--font);
+}
+
+body {
+    overflow: hidden;
+}
+
+#app {
+    max-width: 500px; 
+    background-color: var(--blue); 
+    height: 200vh;
+}
