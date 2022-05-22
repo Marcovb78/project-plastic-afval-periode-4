@@ -1,4 +1,4 @@
-<nav class="fixed bottom-0 left-0 right-0 flex justify-center mx-auto" style="max-width: 500px;">
+<nav class="fixed bottom-0 left-0 right-0 flex justify-center drop-shadow-lg mx-auto" style="max-width: 500px;">
     <div class="rounded-t-3xl w-full bg-gray-200">
         <div class="p-4">
             <div class="flex flex-column justify-center items-center relative">
