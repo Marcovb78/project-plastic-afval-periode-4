@@ -11,7 +11,7 @@
         </div>
         <div class="flex flex-col justify-center">
             @foreach($activities as $activity)
-                <div class="bg-white rounded-lg flex flex-col m-6 mb-4 p-4">
+                <div class="bg-white rounded-lg flex flex-col m-10 mb-0 p-4">
                     <div class="text-left">
                         <span class="wcd-blue">Naam persoon</span>
                     </div>
