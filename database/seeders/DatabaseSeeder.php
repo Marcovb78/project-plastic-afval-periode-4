@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             EventsTableSeeder::class,
             ActivitiesTableSeeder::class,
+            AchievementsTableSeeder::class,
         ]);
     }
 }
