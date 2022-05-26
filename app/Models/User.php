@@ -42,6 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Get all activities belonging to this user.
+     */
     public function activities()
     {
         return $this->hasMany(\Spatie\Activitylog\Models\Activity::class, 'subject_id');
