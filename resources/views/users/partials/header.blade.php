@@ -1,5 +1,5 @@
 <div>
-    <img src="/images/profile-picture.jpg" class="rounded-full" width="200" height="200" alt="Profiel foto" />
+    <img src="/images/profile-picture.png" class="rounded-full bg-slate-400 p-4" width="175" height="175" alt="Profiel foto" />
 </div>
 <div class="bg-white rounded-lg flex flex-col m-6 mb-4 p-4">
     <div class="text-center">
