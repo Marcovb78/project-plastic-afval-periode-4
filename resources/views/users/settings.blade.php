@@ -7,16 +7,16 @@
         @include('users.partials.header')
         <div class="bg-white rounded-lg flex flex-col m-6 mb-4 p-4">
             <div class="flex flex-col w-96">
-                <div>
+                <div class="flex items-center ml-1 mb-1">
                     <a href="#" class="flex items-center" data-modal-toggle="edit-picture">
-                        <img src="/images/icons/pen.svg" width="46" height="46" alt="" />
-                        <span class="font-bold ml-4">Bewerk foto & naam</span>
+                        <img src="/images/icons/pen.svg" width="46" height="46" alt="pen icon" />
+                        <span class="font-bold ml-2">Bewerk foto & naam</span>
                     </a>
                 </div>
-                <div>
+                <div class="flex items-center">
                     <a href="#" class="flex items-center mt-2" data-modal-toggle="edit-settings">
-                        <img src="/images/icons/notebook.svg" width="50" height="50" alt="" />
-                        <span class="font-bold ml-4">Gegevens aanpassen</span>
+                        <img src="/images/icons/notebook.svg" width="50" height="50" alt="notebook icon" />
+                        <span class="font-bold ml-2">Gegevens aanpassen</span>
                     </a>
                 </div>
             </div>
