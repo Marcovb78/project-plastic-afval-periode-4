@@ -33,4 +33,12 @@ class UserController extends Controller
         return view('users.settings');
     }
 
+    /**
+     * Show profile achievements page.
+     */
+    public function showAchievements()
+    {
+        return view('users.achievements');
+    }
+
 }

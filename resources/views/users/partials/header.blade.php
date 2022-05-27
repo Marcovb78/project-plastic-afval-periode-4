@@ -18,7 +18,9 @@
         </div>
         <div>
             <div class="flex mr-7">
-                <img src="/images/icons/trophy.svg" width="55" height="55" />
+                <a href="{{ route('user.achievements') }}">
+                    <img src="/images/icons/trophy{{ \Request::route()->getName() == 'user.achievements' ? '-active' : null }}.svg" width="55" height="55" />
+                </a>
             </div>
         </div>
         <div>

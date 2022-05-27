@@ -21,3 +21,4 @@ Route::get('/events/map', [App\Http\Controllers\EventsController::class, 'showMa
 
 Route::get('/profile', [App\Http\Controllers\UserController::class, 'showProfile'])->name('user.profile');
 Route::get('/settings', [App\Http\Controllers\UserController::class, 'showSettings'])->name('user.settings');
+Route::get('/achievements', [App\Http\Controllers\UserController::class, 'showAchievements'])->name('user.achievements');

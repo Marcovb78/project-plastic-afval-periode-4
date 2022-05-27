@@ -49,4 +49,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(\Spatie\Activitylog\Models\Activity::class, 'subject_id');
     }
+
+    /**
+     * Get all owned cards from the user.
+     */
+    public function achievements ()
+    {
+        return $this->belongsToMany(Achievement::class)->withPivot('progress', 'completed');
+    }
+
 }
