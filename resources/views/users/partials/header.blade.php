@@ -1,9 +1,11 @@
 <div>
-    <img src="/images/profile-picture.png" class="rounded-full bg-slate-400 p-4" width="175" height="175" alt="Profiel foto" />
+    <img src="{{ auth()->user()->picture ? 'storage/'. auth()->user()->picture : '/images/profile-picture.png' }}"
+         class="rounded-full {{ auth()->user()->picture ? null : 'bg-slate-400' }} w-44 h-44"
+         alt="profile picture" />
 </div>
 <div class="bg-white rounded-lg flex flex-col m-6 mb-4 p-4">
     <div class="text-center">
-        <span class="font-bold">{{ auth()->user()->name }}</span>
+        <span class="font-bold text-xl">{{ auth()->user()->name }}</span>
     </div>
     <div class="mt-4 flex justify-center w-96">
         <div class="flex mr-7">

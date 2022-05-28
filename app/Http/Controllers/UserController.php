@@ -26,6 +26,36 @@ class UserController extends Controller
     }
 
     /**
+     * Update profile of the current user.
+     * @param Request $request
+     */
+    public function updateProfile(Request $request)
+    {
+        $user = auth()->user();
+
+        $request->validate([
+            'name' => ['required', 'string'],
+            'picture' => ['nullable', 'file', 'mimes:png,jpg,jpeg', 'max:400'],
+        ]);
+
+        $picture = $user->picture;
+
+        if ($request->hasFile('picture')) {
+            $image = $request->file('picture');
+
+            \Storage::disk('public')->delete($picture);
+            $picture = \Storage::disk('public')->put("profile-pics", $image);
+        }
+
+        $user->update([
+            'name' => $request->name,
+            'picture' => $picture,
+        ]);
+
+        return redirect()->route('user.profile');
+    }
+
+    /**
      * Show profile settings page.
      */
     public function showSettings()

@@ -7,7 +7,7 @@
     --pink: #EC5BAA;
     --blue: #3E8EDE;
     --yellow: #EAC43D;
-    --font: 'Lato', sans-serif; 
+    --font: 'Lato', sans-serif;
 }
 
 * {
@@ -15,9 +15,9 @@
 }
 
 body {
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
-    overflow-y: scroll; 
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: scroll;
 }
 
 body::-webkit-scrollbar {
@@ -25,7 +25,7 @@ body::-webkit-scrollbar {
 }
 
 #app {
-    max-width: 500px; 
+    max-width: 500px;
     background-color: var(--blue);
     min-height: 150vh;
 }
@@ -40,4 +40,8 @@ body::-webkit-scrollbar {
 
 .wcd-yellow {
     color: var(--yellow);
+}
+
+.w-max-500 {
+    max-width: 500px !important;
 }

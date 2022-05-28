@@ -20,5 +20,6 @@ Route::get('/', [App\Http\Controllers\FeedController::class, 'index'])->name('fe
 Route::get('/events/map', [App\Http\Controllers\EventsController::class, 'showMap'])->name('events.map');
 
 Route::get('/profile', [App\Http\Controllers\UserController::class, 'showProfile'])->name('user.profile');
+Route::post('/profile/update', [App\Http\Controllers\UserController::class, 'updateProfile'])->name('user.profile.update');
 Route::get('/settings', [App\Http\Controllers\UserController::class, 'showSettings'])->name('user.settings');
 Route::get('/achievements', [App\Http\Controllers\UserController::class, 'showAchievements'])->name('user.achievements');

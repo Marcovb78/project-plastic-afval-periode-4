@@ -1,5 +1,5 @@
-<nav class="fixed bottom-0 left-0 right-0 flex justify-center drop-shadow-lg mx-auto" style="max-width: 500px;">
-    <div class="rounded-t-3xl w-full" style="background-color: white;">
+<nav class="fixed bottom-0 left-0 right-0 flex justify-center drop-shadow-lg mx-auto z-50 w-max-500">
+    <div class="rounded-t-3xl w-full bg-white">
         <div class="p-4">
             <div class="flex flex-column justify-center items-center relative">
                 <div class="mx-10 drop-shadow-lg {{ \Request::route()->getName() == 'events.map' ? 'relative bottom-10' : null }}">
