@@ -59,4 +59,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Achievement::class)->withPivot('progress', 'completed');
     }
 
+    /**
+     * Get all events that this user joined.
+     */
+    public function events ()
+    {
+        return $this->belongsToMany(Event::class);
+    }
+
 }

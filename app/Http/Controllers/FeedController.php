@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class FeedController extends Controller
@@ -23,9 +25,18 @@ class FeedController extends Controller
      */
     public function index()
     {
+        $pinnedArticles = Article::wherePinned()->get();
+
         $activities = auth()->user()->activities;
 
+        $events = auth()->user()
+            ->events()
+            ->where('to_date', '<', now())
+            ->get();
+
         return view('feed.index')
-            ->with('activities', $activities);
+            ->With('articles', $pinnedArticles)
+            ->with('activities', $activities)
+            ->with('events', $events);
     }
 }
