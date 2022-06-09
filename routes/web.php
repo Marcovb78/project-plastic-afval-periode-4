@@ -23,3 +23,6 @@ Route::get('/profile', [App\Http\Controllers\UserController::class, 'showProfile
 Route::post('/profile/update', [App\Http\Controllers\UserController::class, 'updateProfile'])->name('user.profile.update');
 Route::get('/settings', [App\Http\Controllers\UserController::class, 'showSettings'])->name('user.settings');
 Route::get('/achievements', [App\Http\Controllers\UserController::class, 'showAchievements'])->name('user.achievements');
+
+Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news.index');
+Route::get('/news/{article}/{slug}', [App\Http\Controllers\NewsController::class, 'show'])->name('news.show');

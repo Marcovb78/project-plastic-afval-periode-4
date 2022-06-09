@@ -26,7 +26,6 @@ body::-webkit-scrollbar {
 
 #app {
     max-width: 500px;
-    background-color: var(--blue);
     min-height: 150vh;
 }
 
@@ -34,14 +33,49 @@ body::-webkit-scrollbar {
     color: var(--blue);
 }
 
+.wcd-background-blue {
+    background-color: var(--blue) !important;
+}
+
 .wcd-pink {
     color: var(--pink);
+}
+
+.wcd-background-pink {
+    background-color: var(--pink) !important;
 }
 
 .wcd-yellow {
     color: var(--yellow);
 }
 
+.wcd-background-yellow {
+    background-color: var(--yellow) !important;
+}
+
 .w-max-500 {
     max-width: 500px !important;
+}
+
+.text-white {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+}
+
+.border-white {
+    --tw-border-opacity: 1;
+    border-color: rgb(255 255 255 / var(--tw-border-opacity)) !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

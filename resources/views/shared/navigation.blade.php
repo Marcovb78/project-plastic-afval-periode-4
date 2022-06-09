@@ -16,8 +16,8 @@
                         </div>
                     </a>
                 </div>
-                <div class="mx-10 drop-shadow-lg {{ \Request::route()->getName() == 'news.index' ? 'relative bottom-10' : null }}">
-                    <a href="{{ route('feed.show') }}">
+                <div class="mx-10 drop-shadow-lg {{ str(\Request::route()->getName())->contains('news') ? 'relative bottom-10' : null }}">
+                    <a href="{{ route('news.index') }}">
                         <div class="rounded-full bg-white p-3">
                             <img src="/images/icons/news-active.svg" width="40" height="40" alt="">
                         </div>

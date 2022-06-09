@@ -9,10 +9,6 @@
 
     <title>{{ config('app.name') }} - @yield('title')</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,8 +20,12 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="mx-auto" id="app">
-        @include('shared.header')
+    <div class="mx-auto {{ isset($backgroundClass) ? $backgroundClass : 'wcd-background-blue' }}" id="app">
+        @auth
+            @if(request()->route()->getName() != 'user.profile')
+                @include('shared.header')
+            @endif
+        @endauth
 
         <main class="py-4">
             @yield('content')
@@ -33,6 +33,10 @@
 
         @include('shared.navigation')
     </div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
 
     @stack('modals')
     @stack('scripts')
