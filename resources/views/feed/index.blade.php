@@ -39,14 +39,14 @@
                         </a>
                     @endforeach
                     @foreach($activities as $activity)
-                        <div class="bg-white rounded-lg flex flex-col m-10 mb-0 p-4">
-                            <div class="text-left">
+                        <div class="bg-white flex flex-col mt-5 ml-10 mr-10 p-3" style="border-radius: 30px;">
+                            <div class="text-left ml-2">
                                 <span class="wcd-blue">Naam persoon</span>
                             </div>
                             <div class="mt-4 flex w-96">
                                 <div>
                                     <img src="{{ $activity->causer?->picture ? 'storage/'. $activity->causer->picture : '/images/profile-picture.png' }}"
-                                         class="rounded-full border-2 border-black {{ $activity->causer?->picture ? null : 'bg-slate-400' }} w-32 h-20"
+                                         class="rounded-full border-2 border-black {{ $activity->causer?->picture ? null : 'bg-slate-400' }} w-32 h-20 ml-1"
                                          alt="profile picture" />
                                 </div>
                                 <div class="ml-5">

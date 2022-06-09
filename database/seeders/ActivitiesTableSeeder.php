@@ -17,7 +17,7 @@ class ActivitiesTableSeeder extends Seeder
     {
         activity()->causedBy(auth()->user())
             ->performedOn(User::find(1))
-            ->log("<span class='wcd-blue'>Robin</span> heeft de achievement <span class='wcd-pink'>Niet vriendloos</span> behaald.");
+            ->log("<span class='wcd-blue'>Robin</span> heeft de achievement <span class='wcd-pink'>&nbsp; Niet vriendloos</span> behaald.");
 
         activity()->causedBy(auth()->user())
             ->performedOn(User::find(1))
@@ -25,6 +25,6 @@ class ActivitiesTableSeeder extends Seeder
 
         activity()->causedBy(auth()->user())
             ->performedOn(User::find(1))
-            ->log("<span class='wcd-blue'>Max</span> heeft de achievement <span class='wcd-pink'>Niet vriendloos</span> behaald.");
+            ->log("<span class='wcd-blue'>Max</span> heeft de achievement <span class='wcd-pink'>&nbsp;&nbsp;&nbsp; Niet vriendloos</span> behaald.");
     }
 }
