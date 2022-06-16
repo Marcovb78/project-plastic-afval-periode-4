@@ -13,7 +13,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     @stack('styles')
@@ -21,17 +21,23 @@
 </head>
 <body>
     <div class="mx-auto {{ isset($backgroundClass) ? $backgroundClass : 'wcd-background-blue' }}" id="app">
-        @auth
-            @if(request()->route()->getName() != 'user.profile')
-                @include('shared.header')
-            @endif
-        @endauth
+        <div class="wcd-circle-blue-1 relative"></div>
+        <div class="wcd-circle-blue-2 relative"></div>
+        <div class="wcd-circle-blue-3 relative"></div>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="z-10 relative">
+            @auth
+                @if(request()->route()->getName() != 'user.profile')
+                    @include('shared.header')
+                @endif
+            @endauth
 
-        @include('shared.navigation')
+            <main class="py-4">
+                @yield('content')
+            </main>
+
+            @include('shared.navigation')
+        </div>
     </div>
 
     <!-- Scripts -->

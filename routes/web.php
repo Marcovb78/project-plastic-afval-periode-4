@@ -18,6 +18,7 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\FeedController::class, 'index'])->name('feed.show');
 
 Route::get('/events/map', [App\Http\Controllers\EventsController::class, 'showMap'])->name('events.map');
+Route::get('/events/{event}/join', [App\Http\Controllers\EventsController::class, 'join'])->name('events.join');
 
 Route::get('/profile', [App\Http\Controllers\UserController::class, 'showProfile'])->name('user.profile');
 Route::post('/profile/update', [App\Http\Controllers\UserController::class, 'updateProfile'])->name('user.profile.update');

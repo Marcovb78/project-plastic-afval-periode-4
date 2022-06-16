@@ -43,6 +43,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $appends = [
+        'profile_picture'
+    ];
+
     /**
      * Get all activities belonging to this user.
      */
@@ -65,6 +69,14 @@ class User extends Authenticatable
     public function events ()
     {
         return $this->belongsToMany(Event::class);
+    }
+
+    /**
+     * Get the profile picture of the user.
+     */
+    public function getProfilePictureAttribute()
+    {
+        return $this->picture ?: '/images/profile-picture.png';
     }
 
 }

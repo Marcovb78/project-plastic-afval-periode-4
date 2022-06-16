@@ -25,13 +25,13 @@ class FeedController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
         $pinnedArticles = Article::wherePinned()->get();
 
-        $activities = auth()->user()->activities;
+        $activities = $user->activities;
 
-        $events = auth()->user()
-            ->events()
-            ->where('to_date', '<', now())
+        $events = Event::where('from_date', '>', now())
+            ->whereNotIn('id', $user->events->pluck('id')->toArray())
             ->get();
 
         return view('feed.index')

@@ -24,4 +24,16 @@ class Event extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Format the from date for nice viewing.
+     */
+    public function formattedStartDate()
+    {
+        return $this->from_date->isToday()
+            ? 'Vandaag'
+            : ucfirst($this->from_date->locale('nl')->diffForHumans([
+                'options' => \Carbon\Carbon::ONE_DAY_WORDS | \Carbon\Carbon::TWO_DAY_WORDS,
+            ]));
+    }
 }

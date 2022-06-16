@@ -1,12 +1,12 @@
 @extends('layouts.app', [
-    'backgroundClass' => 'wcd-background-pink' 
+    'backgroundClass' => 'wcd-background-pink'
 ])
 
 @section('title', $article->title)
 
 @section('content')
 <div class="container mt-20">
-    <div class="flex flex-col justify-center p-5">
+    <div class="flex flex-col justify-center pb-5 px-10 pt-10">
         <div>
             <h2 class="text-2xl text-white font-bold text-center">{{ $article->title }}</h2>
         </div>
