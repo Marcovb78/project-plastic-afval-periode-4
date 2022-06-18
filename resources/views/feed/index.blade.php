@@ -44,16 +44,27 @@
                                 </div>
                             </a>
                         @endforeach
+                        @if($articles->count() > 0)
+                            <hr class="mx-10 mt-5 h-1 bg-white rounded-full" />
+                        @endif
+                        @foreach($joinedEvents as $event)
+                            <div class="bg-white rounded-2xl mx-10 mt-5 {{ $loop->last ? 'mb-96' : null }}">
+                                @include('partials.event', ['event' => $event, 'withoutJoin' => true])
+                            </div>
+                        @endforeach
+                        @if($joinedEvents->count() > 0)
+                            <hr class="mx-10 mt-5 h-1 bg-white rounded-full" />
+                        @endif
                         @foreach($activities as $activity)
-                            <div class="activity bg-white flex flex-col mt-5 ml-10 mr-10 p-3" style="border-radius: 30px;">
-                                <div class="text-left ml-2">
-                                    <span class="wcd-blue">Naam persoon</span>
+                            <div class="bg-white rounded-lg flex flex-col mx-10 mt-5 p-4 {{ $loop->last ? 'mb-96' : null }}">
+                                <div class="text-left">
+                                    <span class="wcd-blue">{{ $activity->causer?->name ?: '<naam>' }}</span>
                                 </div>
                                 <div class="mt-4 flex w-96">
                                     <div>
-                                        <img src="{{ $activity->causer?->picture ? 'storage/'. $activity->causer->picture : '/images/profile-picture.png' }}"
-                                            class="rounded-full border-2 border-black {{ $activity->causer?->picture ? null : 'bg-slate-400' }} w-32 h-20 ml-1"
-                                            alt="profile picture" />
+                                        <img src="{{ $activity->causer?->profile_picture ?: '/images/profile-picture.png' }}"
+                                             class="rounded-full border-2 border-black {{ $activity->causer?->picture ? null : 'bg-slate-400' }} w-32 h-20"
+                                             alt="profile picture" />
                                     </div>
                                     <div class="ml-5">
                                         <p>{!! $activity->description !!}</p>
@@ -66,42 +77,8 @@
                                     <span>{{ $activity->created_at->diffForHumans() }}</span>
                                 </div>
                             </div>
-                        </a>
-                    @endforeach
-                    @if($articles->count() > 0)
-                        <hr class="mx-10 mt-5 h-1 bg-white rounded-full" />
-                    @endif
-                    @foreach($joinedEvents as $event)
-                        <div class="bg-white rounded-2xl mx-10 mt-5 {{ $loop->last ? 'mb-96' : null }}">
-                            @include('partials.event', ['event' => $event, 'withoutJoin' => true])
-                        </div>
-                    @endforeach
-                    @if($joinedEvents->count() > 0)
-                        <hr class="mx-10 mt-5 h-1 bg-white rounded-full" />
-                    @endif
-                    @foreach($activities as $activity)
-                        <div class="bg-white rounded-lg flex flex-col mx-10 mt-5 p-4">
-                            <div class="text-left">
-                                <span class="wcd-blue">{{ $activity->causer?->name ?: '<naam>' }}</span>
-                            </div>
-                            <div class="mt-4 flex w-96">
-                                <div>
-                                    <img src="{{ $activity->causer?->profile_picture ?: '/images/profile-picture.png' }}"
-                                         class="rounded-full border-2 border-black {{ $activity->causer?->picture ? null : 'bg-slate-400' }} w-32 h-20"
-                                         alt="profile picture" />
-                                </div>
-                                <div class="ml-5">
-                                    <p>{!! $activity->description !!}</p>
-                                </div>
-                                <div>
-                                    <img src="/images/icons/trophy-active.svg" height="90" width="90" alt="">
-                                </div>
-                            </div>
-                            <div class="text-right text-gray-500 m-4">
-                                <span>{{ $activity->created_at->diffForHumans() }}</span>
-                            </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
 
