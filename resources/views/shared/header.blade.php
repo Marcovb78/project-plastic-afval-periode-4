@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-transparent fixed w-full drop-shadow-md w-max-500 fixed overflow-hidden z-50">
+<nav class="navbar navbar-light bg-transparent fixed w-full drop-shadow-md w-max-500 overflow-hidden z-50">
     <div class="flex">
         <div class="ml-5">
             <!-- Left Side Of Navbar -->

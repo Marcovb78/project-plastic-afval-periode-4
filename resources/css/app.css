@@ -54,12 +54,8 @@
 body {
     -ms-overflow-style: none;
     scrollbar-width: none;
-    overflow-y: scroll;
+    overflow-y: hidden;
     z-index: 0;
-}
-
-body::-webkit-scrollbar {
-    display: none;
 }
 
 #app {
@@ -292,4 +288,31 @@ body::-webkit-scrollbar {
     100% {
         opacity: 1;
     }
+}
+
+.feed-scroll {
+    width: 515px;
+    height: 700px;
+    overflow: hidden;
+}
+
+.article-scroll {
+    width: 515px;
+    height: 750px;
+    overflow: hidden;
+}
+
+.scrollable  {
+    height: 100%;
+    margin-right: -50px;
+    padding-right: 50px;
+    overflow-y: scroll;
+}
+
+.activity:last-child {
+    margin-bottom: 45px;
+}
+
+.article:last-child {
+    margin-bottom: 30px;
 }
