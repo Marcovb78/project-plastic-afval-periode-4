@@ -1,40 +1,51 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'backgroundClass' => 'wcd-background-yellow'
+])
 
 @section('title', 'Mijn profiel')
 
 @section('content')
-    <div class="flex flex-col justify-center items-center mt-32 mb-20">
+    <div class="flex flex-col justify-center items-center mt-16">
         @include('users.partials.header')
         <div class="flex flex-col justify-center">
-            @forelse(auth()->user()->activities as $activity)
-                <div class="bg-white rounded-lg flex flex-col m-10 mb-0 p-4">
-                    <div class="text-left">
-                        <span class="wcd-blue">Naam persoon</span>
-                    </div>
-                    <div class="mt-4 flex w-96">
-                        <div>
-                            <img src="{{ $activity->causer?->picture ? 'storage/'. $activity->causer->picture : '/images/profile-picture.png' }}"
-                                 class="rounded-full border-2 border-black {{ $activity->causer?->picture ? null : 'bg-slate-400' }} w-32 h-20"
-                                 alt="profile picture" />
-                        </div>
-                        <div class="ml-5">
-                            <p>{!! $activity->description !!}</p>
-                        </div>
-                        <div>
-                            <img src="/images/icons/trophy-active.svg" height="90" width="90" alt="">
-                        </div>
-                    </div>
-                    <div class="text-right text-gray-500 m-4">
-                        <span>{{ $activity->created_at->diffForHumans() }}</span>
-                    </div>
-                </div>
-            @empty
-                <div class="bg-white rounded-lg m-6 mb-4 p-4">
-                    <div class="mt-4 flex w-96">
-                        <p>Je feed is op dit moment leeg.</p>
-                    </div>
-                </div>
-            @endforelse
+            <div id="calendar" class="mt-2"></div>
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        let eventDates = @json(auth()->user()->events->pluck('from_date')->toArray());
+        let formattedDates = [];
+
+        eventDates.forEach((date) => {
+            let formattedDate = new Date(date);
+            var DD = String(formattedDate.getDate()).padStart(2, '0');
+            var MM = String(formattedDate.getMonth() + 1).padStart(2, '0');
+            var YYYY = formattedDate.getFullYear();
+
+            formattedDates.push(YYYY +'-'+ MM +'-'+ DD);
+        })
+
+        const calendar = new VanillaCalendar({
+            HTMLElement: document.querySelector('#calendar'),
+            date: {
+                min: '2000-01-01',
+                max: '2030-12-31',
+                today: new Date(),
+            },
+            settings: {
+                selected: {
+                    dates: formattedDates,
+                },
+            },
+            actions: {
+                clickDay(e) {
+                    throw new Error('Not happening mate.');
+                },
+            },
+        });
+
+        calendar.init();
+    </script>
+@endpush

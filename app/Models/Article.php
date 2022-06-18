@@ -11,8 +11,14 @@ class Article extends Model
     use HasFactory;
 
     /**
+     * The attributes that are not mass assignable.
+     * @var array
+     */
+    protected $guarded = [];
+
+    /**
      * Scope a query to only include active articles.
-     * 
+     *
      * @param Builder $builder
      * @return Builder $builder
      */
@@ -23,7 +29,7 @@ class Article extends Model
 
     /**
      * Scope a query to only include pinned articles.
-     * 
+     *
      * @param Builder $builder
      * @return Builder $builder
      */

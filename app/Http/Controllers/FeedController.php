@@ -30,13 +30,19 @@ class FeedController extends Controller
 
         $activities = $user->activities;
 
-        $events = Event::where('from_date', '>', now())
+        $events = Event::whereToCome()
+            ->whereNotFull()
             ->whereNotIn('id', $user->events->pluck('id')->toArray())
+            ->get();
+
+        $joinedEvents = $user->events()
+            ->whereToCome()
             ->get();
 
         return view('feed.index')
             ->With('articles', $pinnedArticles)
             ->with('activities', $activities)
-            ->with('events', $events);
+            ->with('events', $events)
+            ->with('joinedEvents', $joinedEvents);
     }
 }

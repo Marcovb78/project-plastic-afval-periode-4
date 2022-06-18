@@ -43,6 +43,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * The attributes to append to every instance.
+     * @var array
+     */
     protected $appends = [
         'profile_picture'
     ];
@@ -61,6 +65,14 @@ class User extends Authenticatable
     public function achievements ()
     {
         return $this->belongsToMany(Achievement::class)->withPivot('progress', 'completed');
+    }
+
+    /**
+     * Get all owned cards from the user.
+     */
+    public function friends ()
+    {
+        return $this->belongsToMany(User::class, 'user_friends', 'user_id', 'friend_id');
     }
 
     /**

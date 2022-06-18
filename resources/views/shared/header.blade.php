@@ -5,7 +5,7 @@
             <ul class="navbar-nav me-auto flex items-center">
                 <li>
                     <a href="{{ route('user.profile') }}">
-                        <img src="{{ auth()->user()->picture ? 'storage/'. auth()->user()->picture : '/images/profile-picture.png' }}"
+                        <img src="{{ auth()->user()->profile_picture }}"
                                 class="m-5 rounded-full {{ auth()->user()->picture ? null : 'bg-slate-400' }} w-20 h-20"
                                 alt="profile picture" />
                     </a>

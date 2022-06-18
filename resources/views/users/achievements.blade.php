@@ -1,9 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'backgroundClass' => 'wcd-background-yellow'
+])
 
 @section('title', 'Prestaties')
 
 @section('content')
-    <div class="flex flex-col justify-center items-center mt-32 mb-20">
+    <div class="flex flex-col justify-center items-center mt-16 mb-20">
         @include('users.partials.header')
         <div class="flex flex-col justify-center">
             <div class="bg-white rounded-lg m-6 p-4 px-10">

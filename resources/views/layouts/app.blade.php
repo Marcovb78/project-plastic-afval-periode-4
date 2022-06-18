@@ -18,16 +18,21 @@
     <!-- Styles -->
     @stack('styles')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
 </head>
 <body>
     <div class="mx-auto {{ isset($backgroundClass) ? $backgroundClass : 'wcd-background-blue' }}" id="app">
-        <div class="wcd-circle-blue-1 relative"></div>
-        <div class="wcd-circle-blue-2 relative"></div>
-        <div class="wcd-circle-blue-3 relative"></div>
+        <div class="wcd-circle-1 relative"></div>
+        <div class="wcd-circle-2 relative"></div>
+        <div class="wcd-circle-3 relative"></div>
 
         <div class="z-10 relative">
             @auth
-                @if(request()->route()->getName() != 'user.profile')
+                @if (
+                    request()->route()->getName() != 'user.profile' &&
+                    request()->route()->getName() != 'events.map' &&
+                    request()->route()->getName() != 'user.achievements'
+                )
                     @include('shared.header')
                 @endif
             @endauth
@@ -40,11 +45,13 @@
         </div>
     </div>
 
+    @stack('modals')
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
 
-    @stack('modals')
     @stack('scripts')
 </body>
 </html>

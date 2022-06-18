@@ -19,19 +19,31 @@ class EventsController extends Controller
     }
 
     /**
-     * Show the google map with all event pins.
+     * Show the map with all event pins.
+     * @return
      */
     public function showMap()
     {
-        $events = Event::all();
+        $events = Event::whereToCome()->get();
 
         return view('events.map')
             ->with('events', $events);
     }
 
     /**
+     * Create a new event.
+     * @param Request $request
+     * @return
+     */
+    public function create(Request $request)
+    {
+        dd($request->all());
+    }
+
+    /**
      * Join an event.
-     *
+     * @param Event $event
+     * @return
      */
     public function join(Event $event)
     {

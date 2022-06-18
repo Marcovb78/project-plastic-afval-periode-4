@@ -16,15 +16,15 @@ class ActivitiesTableSeeder extends Seeder
     public function run()
     {
         activity()->causedBy(auth()->user())
-            ->performedOn(User::find(1))
-            ->log("<span class='wcd-blue'>Robin</span> heeft de achievement <span class='wcd-pink'>Niet vriendloos</span> behaald.");
+            ->performedOn(User::find(2))
+            ->log("<span class='wcd-blue'>Wouter</span> heeft de achievement <span class='wcd-pink'>Niet vriendloos</span> behaald.");
 
         activity()->causedBy(auth()->user())
-            ->performedOn(User::find(1))
+            ->performedOn(User::find(4))
             ->log("<span class='wcd-blue'>Marco</span> heeft de achievement <span class='wcd-pink'>Niet vriendloos</span> behaald.");
 
         activity()->causedBy(auth()->user())
-            ->performedOn(User::find(1))
+            ->performedOn(User::find(3))
             ->log("<span class='wcd-blue'>Max</span> heeft de achievement <span class='wcd-pink'>Niet vriendloos</span> behaald.");
     }
 }

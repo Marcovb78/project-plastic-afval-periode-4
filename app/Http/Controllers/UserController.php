@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class UserController extends Controller
 {
@@ -69,6 +71,36 @@ class UserController extends Controller
     public function showAchievements()
     {
         return view('users.achievements');
+    }
+
+    /**
+     * Find friends page.
+     */
+    public function findFriends()
+    {
+        $users = User::select(['id', 'name', 'picture'])
+            ->whereNotIn('id', auth()->user()->friends->pluck('id')->toArray())
+            ->get()
+            ->toArray();
+
+        return view('users.find-friends')
+            ->with('users', $users);
+    }
+
+    /**
+     * Add a user as friend.
+     * @param User $user
+     * @return
+     */
+    public function addFriend(User $user)
+    {
+        $authUser = auth()->user();
+
+        // Add friend to the user.
+        if (!$authUser->friends()->where('id', $user->id)->exists())
+            $authUser->friends()->attach($user->id);
+
+        return redirect()->back();
     }
 
 }

@@ -19,9 +19,13 @@ Route::get('/', [App\Http\Controllers\FeedController::class, 'index'])->name('fe
 
 Route::get('/events/map', [App\Http\Controllers\EventsController::class, 'showMap'])->name('events.map');
 Route::get('/events/{event}/join', [App\Http\Controllers\EventsController::class, 'join'])->name('events.join');
+Route::post('/events/create', [App\Http\Controllers\EventsController::class, 'create'])->name('events.create');
 
 Route::get('/profile', [App\Http\Controllers\UserController::class, 'showProfile'])->name('user.profile');
 Route::post('/profile/update', [App\Http\Controllers\UserController::class, 'updateProfile'])->name('user.profile.update');
+Route::get('/profile/find-friends', [App\Http\Controllers\UserController::class, 'findFriends'])->name('user.find-friends');
+Route::get('/profile/add-friend/{user}', [App\Http\Controllers\UserController::class, 'addFriend'])->name('user.add-friend');
+
 Route::get('/settings', [App\Http\Controllers\UserController::class, 'showSettings'])->name('user.settings');
 Route::get('/achievements', [App\Http\Controllers\UserController::class, 'showAchievements'])->name('user.achievements');
 

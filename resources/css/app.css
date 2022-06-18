@@ -2,11 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '/node_modules/@uvarov.frontend/vanilla-calendar/vanilla-calendar.min.css';
+
+.vanilla-calendar-day_weekend.vanilla-calendar-day_today, .vanilla-calendar-day_holiday.vanilla-calendar-day_today {
+    background-color: var(--blue);
+    color: inherit;
+}
+
+.vanilla-calendar-day_weekend, .vanilla-calendar-day_holiday {
+    color: inherit;
+}
+
+.vanilla-calendar-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-column-gap: 32px;
+    -moz-column-gap: 32px;
+    column-gap: 32px;
+    justify-items: center;
+    background: white;
+    padding: 0 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.vanilla-calendar-week__day {
+    color: inherit;
+}
+
+.vanilla-calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-column-gap: 20px;
+    -moz-column-gap: 20px;
+    column-gap: 20px;
+    row-gap: 10px;
+    justify-items: center;
+}
 
 :root {
     --pink: #EC5BAA;
     --blue: #3E8EDE;
-    --yellow: #EAC43D;
+    --yellow: #FEC10D;
     --font: 'Poppins', sans-serif;
 }
 
@@ -30,6 +67,11 @@ body::-webkit-scrollbar {
     min-height: 150vh;
     z-index: 2;
     overflow: hidden;
+    background-attachment: fixed;
+}
+
+#scrollable-friends {
+    cursor: move;
 }
 
 .wcd-blue {
@@ -40,7 +82,22 @@ body::-webkit-scrollbar {
     background-color: var(--blue) !important;
 }
 
-.wcd-circle-blue-1:after {
+.wcd-background-pink .wcd-circle-1:after,
+.wcd-background-pink .wcd-circle-3:after {
+    background: #c7287e;
+}
+
+.wcd-background-pink .wcd-circle-2:after {
+    background: #e8419b;
+}
+
+.wcd-background-yellow .wcd-circle-1:after,
+.wcd-background-yellow .wcd-circle-3:after,
+.wcd-background-yellow .wcd-circle-2:after {
+    background: transparent;
+}
+
+.wcd-circle-1:after {
     content: "";
     position: absolute;
     top: -150px;
@@ -51,7 +108,7 @@ body::-webkit-scrollbar {
     background: #36689B;
 }
 
-.wcd-circle-blue-2:after {
+.wcd-circle-2:after {
     content: "";
     position: absolute;
     top: 60px;
@@ -62,7 +119,7 @@ body::-webkit-scrollbar {
     background: #4D86C1;
 }
 
-.wcd-circle-blue-3:after {
+.wcd-circle-3:after {
     content: "";
     position: absolute;
     top: 450px;
@@ -109,6 +166,123 @@ body::-webkit-scrollbar {
 
 .bottom--5 {
     bottom: -1.25rem;
+}
+
+.calendar {
+    display: flex;
+    position: relative;
+    width: 400px;
+    border-radius: 4px;
+}
+
+.month-year {
+    position: absolute;
+    bottom: 62px;
+    right: -27px;
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: 300;
+    color: #94A3B8;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+}
+
+.year {
+    margin-left: 4px;
+    color: #CBD5E1;
+}
+
+.days {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.day-label {
+    position: relative;
+    flex-basis: calc(14.286% - 2px);
+    padding: 7px;
+    font-weight: bold;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #1E293B;
+    text-align: center;
+    background: white;
+}
+
+.day-label:nth-child(1) {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 10px;
+}
+
+.day-label:nth-child(7) {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-right: 10px;
+}
+
+.day {
+    position: relative;
+    flex-basis: calc(14.286% - 2px);
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 300;
+    color: black;
+}
+
+.day.dull {
+    color: #FCF5E2;
+}
+
+.day.today {
+    font-weight: 600;
+    background: var(--blue);
+}
+
+.day.today:hover {
+    background: var(--blue);
+}
+
+.day.upcoming-event {
+    font-weight: 600;
+    background: #FFA85B;
+}
+
+.day.past-event {
+    font-weight: 600;
+    background: #44A451;
+}
+
+.day.upcoming-event:hover {
+    background: #FFA85B;
+}
+
+.day.past-event:hover {
+    background: #44A451;
+}
+
+.day::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.day:hover {
+    background: var(--blue);
+}
+
+.day .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @keyframes fadeIn {

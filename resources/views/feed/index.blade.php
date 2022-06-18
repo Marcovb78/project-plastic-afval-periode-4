@@ -17,42 +17,15 @@
             </div>
             <div id="tab-content">
                 <div class="hidden flex flex-col justify-center" id="events" role="tabpanel" aria-labelledby="events-tab">
-                    @foreach($events as $event)
-                        <div class="bg-white rounded-2xl m-10 mb-0">
-                            <div class="relative">
-                                <img class="object-cover rounded-t-2xl bg-center max-h-36 w-full" src="{{ $event->image ?: 'https://via.placeholder.com/500' }}" alt="{{ $event->name }}" />
-                                <a href="{{ route('events.join', [ 'event' => $event->id ]) }}" class="absolute right-3 bottom--5">
-                                    <div class="rounded-3xl px-4 py-2 flex flex-row items-center gap-4 bg-yellow-300">
-                                        <div class="">
-                                            <img class="h-8 w-8" src="/images/icons/calender.svg" alt="" />
-                                        </div>
-                                        <div class="font-bold">
-                                            <span class="text-sm">Join</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="flex flex-col p-2 gap-2 p-7 font-bold">
-                                <div>
-                                    <span>{{ $event->formattedStartDate() }}</span>
-                                    <span class="wcd-blue ml-1">{{ $event->from_date->format('H:i') }} - {{ $event->to_date->format('H:i') }}</span>
-                                </div>
-                                <div class="text-xl">
-                                    <p>{!! $event->title !!}</p>
-                                </div>
-                                <div class="flex flex-row justify-between">
-                                    <div class="flex flex-row items-center">
-                                        <img class="rounded-full w-7 h-7" src="{{ $event->user->profile_picture }}" alt="{{ $event->user->name }}" />
-                                        <span class="ml-1 text-xs">{{ $event->user->name }}</span>
-                                    </div>
-                                    <div class="flex flex-row items-center">
-                                        <img class="w-6 h-6" src="/images/icons/friend.svg" />
-                                        <span class="ml-2 text-sm tracking-wide">8<span class="text-gray-300 font-normal">/10</span></span>
-                                    </div>
-                                </div>
-                            </div>
+                    @forelse($events as $event)
+                        <div class="bg-white rounded-2xl m-10 mb-0 {{ $loop->last ? 'mb-24' : null }}">
+                            @include('partials.event', ['event' => $event])
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="bg-white rounded-2xl m-10 mb-0 p-4">
+                            <p class="font-bold">Er zijn geen evenementen beschikbaar op dit moment.</p>
+                        </div>
+                    @endforelse
                 </div>
                 <div class="hidden flex flex-col justify-center" id="feed" role="tabpanel" aria-labelledby="feed-tab">
                     @foreach($articles as $article)
@@ -70,14 +43,25 @@
                             </div>
                         </a>
                     @endforeach
+                    @if($articles->count() > 0)
+                        <hr class="mx-10 mt-5 h-1 bg-white rounded-full" />
+                    @endif
+                    @foreach($joinedEvents as $event)
+                        <div class="bg-white rounded-2xl mx-10 mt-5 {{ $loop->last ? 'mb-24' : null }}">
+                            @include('partials.event', ['event' => $event, 'withoutJoin' => true])
+                        </div>
+                    @endforeach
+                    @if($joinedEvents->count() > 0)
+                        <hr class="mx-10 mt-5 h-1 bg-white rounded-full" />
+                    @endif
                     @foreach($activities as $activity)
-                        <div class="bg-white rounded-lg flex flex-col m-10 mb-0 p-4">
+                        <div class="bg-white rounded-lg flex flex-col mx-10 mt-5 p-4">
                             <div class="text-left">
-                                <span class="wcd-blue">Naam persoon</span>
+                                <span class="wcd-blue">{{ $activity->causer?->name ?: '<naam>' }}</span>
                             </div>
                             <div class="mt-4 flex w-96">
                                 <div>
-                                    <img src="{{ $activity->causer?->picture ? 'storage/'. $activity->causer->picture : '/images/profile-picture.png' }}"
+                                    <img src="{{ $activity->causer?->profile_picture ?: '/images/profile-picture.png' }}"
                                          class="rounded-full border-2 border-black {{ $activity->causer?->picture ? null : 'bg-slate-400' }} w-32 h-20"
                                          alt="profile picture" />
                                 </div>

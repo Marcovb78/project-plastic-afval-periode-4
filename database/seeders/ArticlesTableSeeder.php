@@ -33,7 +33,7 @@ class ArticlesTableSeeder extends Seeder
             'image' => '/images/placeholder.jpg',
         ]);
 
-        
+
         Article::create([
             'title' => 'DE RESULTATEN VAN 2021',
             'content' => file_get_contents('http://loripsum.net/api'),
