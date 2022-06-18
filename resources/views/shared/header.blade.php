@@ -10,25 +10,10 @@
                                 alt="profile picture" />
                     </a>
                 </li>
-                <li class="flex flex-col text-white font-bold">
-                    <span>{{ auth()->user()->name }}</span>
+                <li class="flex flex-col text-white">
+                    <span class="font-semibold">{{ auth()->user()->name }}</span>
                     <span class="text-xs">{{ '@'. str()->snake(auth()->user()->name) }}</span>
                 </li>
-            </ul>
-        </div>
-        <div class="ml-auto">
-            <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ms-auto">
-                <!-- Authentication Links -->
-                @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                @endguest
             </ul>
         </div>
     </div>

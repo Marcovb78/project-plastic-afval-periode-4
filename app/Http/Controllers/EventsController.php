@@ -17,7 +17,7 @@ class EventsController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Show the google map with all event pins.
      */
@@ -27,6 +27,19 @@ class EventsController extends Controller
 
         return view('events.map')
             ->with('events', $events);
+    }
+
+    /**
+     * Join an event.
+     *
+     */
+    public function join(Event $event)
+    {
+        auth()->user()->events()->attach($event->id);
+
+        // setMessage('success', "Je hebt het evenement {$event->name} gejoint!");
+
+        return redirect()->route('feed.show');
     }
 
 }
