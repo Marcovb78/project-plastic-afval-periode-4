@@ -48,7 +48,7 @@
                             <hr class="mx-10 mt-5 h-1 bg-white rounded-full" />
                         @endif
                         @foreach($joinedEvents as $event)
-                            <div class="bg-white rounded-2xl mx-10 mt-5 {{ $loop->last ? 'mb-32' : null }}">
+                            <div class="bg-white rounded-2xl mx-10 mt-5">
                                 @include('partials.event', ['event' => $event, 'withoutJoin' => true])
                             </div>
                         @endforeach
