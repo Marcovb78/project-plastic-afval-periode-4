@@ -18,7 +18,7 @@ class EventsTableSeeder extends Seeder
         Event::create([
             'user_id' => 2,
             'title' => 'Suppen in <span class="wcd-pink">Het Winsumerdiep</span>',
-            'description' => 'Lekker suppen in het Winsumerdiep ofzo.',
+            'description' => 'Lekker suppen in het Winsumerdiep.',
             'total_spots' => 5,
             'longitude' => '53.334511',
             'latitude' => '6.532379',
@@ -42,7 +42,7 @@ class EventsTableSeeder extends Seeder
         Event::create([
             'user_id' => 3,
             'title' => 'Ploggen op <span class="wcd-pink">Stadsstrand Groningen</span>',
-            'description' => 'Kom gezellig ploggen bij het stadsstrand Groningen',
+            'description' => 'Kom gezellig ploggen bij het stadsstrand Groningen.',
             'total_spots' => 12,
             'longitude' => '53.2162379',
             'latitude' => '6.5386726',
@@ -54,7 +54,7 @@ class EventsTableSeeder extends Seeder
         Event::create([
             'user_id' => 4,
             'title' => 'Wandelen in <span class="wcd-pink">Uithuizen</span>',
-            'description' => 'Wandeling rond het voetbalveld van Uithuizen.',
+            'description' => 'Wandeling rond het dorp van Uithuizen.',
             'total_spots' => 4,
             'longitude' => '53.4038876',
             'latitude' => '6.6712087',
