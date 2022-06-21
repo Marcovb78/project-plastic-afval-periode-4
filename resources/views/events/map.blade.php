@@ -3,53 +3,133 @@
 @section('title', 'Evenementen map')
 
 @section('content')
-    <div x-data="{ open: false }">
-        <!-- <div class="absolute top-1 right-1 z-20">
-            <button class="px-4 py-2 rounded-xl wcd-background-yellow text-sm flex items-center" type="button" name="button" @click="open = !open"><img src="/images/icons/pin.svg" class="w-5 h-5 mr-2">Nieuw event</button>
-        </div> -->
-        <!-- Dialog (full screen) -->
-        {{-- <div class="absolute top-0 left-0 flex items-center justify-center w-full h-full z-20" style="background-color: rgba(0,0,0,.5);" x-show="open"  >
-            <!-- A basic modal dialog with title, body and one button to close -->
-            <div class="h-auto p-3 mx-2 text-left bg-white rounded shadow-xl md:max-w-md" @click.away="open = false">
-                <div class="mt-3">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900 border-bottom-2 border-gray-400">
-                        Maak een evenement!
-                    </h3>
-                    <div class="mt-2">
-                        <p class="text-sm leading-5 text-gray-500">
-                            <form id="eventForm" action="{{ route('events.create') }}" method="post">
-                                @csrf
-
-                                <div class="grid grid-flow-col auto-cols-auto">
-
-                                    <div class="col-span-12">
-                                        <label class="block text-gray-700 font-bold mb-2 text-left" for="title">Titel</label>
-                                        <input class="shadow appearance-none border rounded py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" id="title" type="text" placeholder="Titel van het evenement" name="title" />
-                                    </div>
-
-                                </div>
-                            </form>
-                        </p>
-                    </div>
-                </div>
-                <!-- One big close button.  --->
-                <div class="mt-5 sm:mt-6">
-                    <span class="flex w-full justify-between rounded-md shadow-sm">
-                        <button @click="open = false" class="inline-flex justify-center px-3 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 text-sm">
-                            Annuleren
-                        </button>
-                        <button @click="open = false" type="submit" form="eventForm" class="inline-flex justify-center px-3 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 text-sm">
-                            Aanmaken!
-                        </button>
-                    </span>
-                </div>
-            </div>
-        </div> --}}
+    <div>
+        <div class="absolute top-1 right-1 z-20">
+            <button class="px-4 py-2 rounded-xl wcd-background-yellow text-sm flex items-center" type="button" data-modal-toggle="create-event-modal">
+                <img src="/images/icons/pin.svg" class="w-5 h-5 mr-2">Nieuw event
+            </button>
+        </div>
         <div id="map" class="h-screen z-10"></div>
     </div>
 @endsection
 
+@push('modals')
+    <div id="create-event-modal" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+        <!-- A basic modal dialog with title, body and one button to close -->
+        <div class="h-auto p-6 mx-2 text-left bg-white rounded-2xl shadow-xl md:max-w-md">
+            <div class="mt-3">
+                <h3 class="text-xl ml-3 font-bold leading-6 text-gray-900 border-bottom-2 border-gray-400">
+                    Maak een evenement
+                </h3>
+                <div class="mt-2">
+                    <p class="text-sm leading-5 text-gray-500">
+                        <form id="eventForm" action="{{ route('events.create') }}" method="post">
+                            @csrf
+
+                            <div class="flex flex-col justify-center gap-5 m-3 mt-6">
+
+                                <div class="">
+                                    <div class="border-b @error('title') border-red-400 @else border-gray-400 @enderror">
+                                        <input class="border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" id="title" type="text" placeholder="Titel" name="title" required />
+                                    </div>
+                                    @error('title')
+                                        <span class="text-red-400 text-sm">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="">
+                                    <div class="border-b @error('description') border-red-400 @else border-gray-400 @enderror">
+                                        <input class="border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" id="description" type="text" placeholder="Beschrijving" name="description" required />
+                                    </div>
+                                    @error('description')
+                                        <span class="text-red-400 text-sm">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="">
+                                    <div class="border-b @error('city') border-red-400 @else border-gray-400 @enderror">
+                                        <input class="border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" id="city" type="text" placeholder="Plaats" name="city" required />
+                                    </div>
+                                    @error('city')
+                                        <span class="text-red-400 text-sm">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="">
+                                    <div class="border-b @error('spots') border-red-400 @else border-gray-400 @enderror">
+                                        <input class="border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" id="spots" type="number" placeholder="Max aantal deelnemers" name="spots" required />
+                                    </div>
+                                    @error('spots')
+                                        <span class="text-red-400 text-sm">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div>
+                                    <h2 class="font-bold">Datum en tijd</h2>
+                                </div>
+
+                                <div class="">
+                                    <div class="border-b @error('from_date') border-red-400 @else border-gray-400 @enderror">
+                                        <input class="flatpickr border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" type="text" name="from_date" placeholder="Start datum + tijd" readonly required />
+                                    </div>
+                                    @error('from_date')
+                                        <span class="text-red-400 text-sm">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="">
+                                    <div class="border-b @error('to_date') border-red-400 @else border-gray-400 @enderror">
+                                        <input class="flatpickr border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" type="text" name="to_date" placeholder="Eind datum + tijd" readonly required />
+                                    </div>
+                                    @error('to_date')
+                                        <span class="text-red-400 text-sm">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                            </div>
+                        </form>
+                    </p>
+                </div>
+            </div>
+            <!-- One big close button.  --->
+            <div class="mt-5 sm:mt-6">
+                <span class="flex w-full justify-between rounded-md shadow-sm">
+                    <button data-modal-toggle="create-event-modal" class="inline-flex justify-center px-4 py-1 text-gray-400 rounded border-2 border-gray-400 text-sm">
+                        Annuleren
+                    </button>
+                    <button type="submit" form="eventForm" class="inline-flex justify-center px-4 py-1 text-black bg-blue-500 rounded text-sm">
+                        Aanmaken!
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+@endpush
+
 @push('scripts')
+    <script>
+        let elements = document.querySelectorAll('[data-modal-toggle]')
+
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].addEventListener('click', function () {
+                setTimeout(function () {
+                    let backgroundElement = document.querySelector('[modal-backdrop]')
+
+                    if (backgroundElement) {
+                        backgroundElement.classList.remove('bg-gray-900')
+                        backgroundElement.classList.remove('z-40')
+                        backgroundElement.classList.add('bg-white')
+                        backgroundElement.classList.add('z-30')
+                    }
+                })
+            })
+        }
+
+        flatpickr('.flatpickr', {
+            enableTime: true,
+            time_24hr: true,
+        })
+    </script>
     <script type="text/javascript">
         let events = @json($events);
 

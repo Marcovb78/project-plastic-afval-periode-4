@@ -24,7 +24,10 @@ class EventsController extends Controller
      */
     public function showMap()
     {
-        $events = Event::whereToCome()->get();
+        $events = Event::whereToCome()
+            ->whereNotFull()
+            ->excludeAuthUser()
+            ->get();
 
         return view('events.map')
             ->with('events', $events);
@@ -37,7 +40,28 @@ class EventsController extends Controller
      */
     public function create(Request $request)
     {
-        dd($request->all());
+        $user = auth()->user();
+
+        $request->validate([
+            'title' => [ 'required', 'string', 'max:50' ],
+            'description' => [ 'required', 'string', 'max:100' ],
+            'city' => [ 'required', 'string' ],
+            'spots' => [ 'required', 'integer' ],
+            'from_date' => [ 'required', 'string' ],
+            'to_date' => [ 'required', 'string '],
+        ]);
+
+        $user->events()->create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'latitude' => '53.2350634',
+            'longitude' => '6.9833811',
+            'total_spots' => $request->spots,
+            'from_date' => $request->from_date,
+            'to_date' => $request->to_date,
+        ]);
+
+        return redirect()->route('feed.show');
     }
 
     /**
@@ -48,8 +72,6 @@ class EventsController extends Controller
     public function join(Event $event)
     {
         auth()->user()->events()->attach($event->id);
-
-        // setMessage('success', "Je hebt het evenement {$event->name} gejoint!");
 
         return redirect()->route('feed.show');
     }
