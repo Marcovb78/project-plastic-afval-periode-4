@@ -31,7 +31,8 @@
                 @if (
                     request()->route()->getName() != 'user.profile' &&
                     request()->route()->getName() != 'events.map' &&
-                    request()->route()->getName() != 'user.achievements'
+                    request()->route()->getName() != 'user.achievements' &&
+                    request()->route()->getName() != 'user.settings'
                 )
                     @include('shared.header')
                 @endif

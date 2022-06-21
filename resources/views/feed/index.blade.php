@@ -5,6 +5,7 @@
 @section('content')
     <div class="container mt-32">
         <div class="flex flex-col justify-center">
+
             <div class="rounded-full bg-white m-10 mt-0">
                 <ul class="flex" id="tabs" data-tabs-toggle="#tab-content" role="tablist">
                     <li class="basis-1/2 text-center" role="presentation">
@@ -15,6 +16,7 @@
                     </li>
                 </ul>
             </div>
+
             <div class="feed-scroll">
                 <div class="scrollable" id="tab-content">
                     <div class="hidden flex flex-col justify-center" id="events" role="tabpanel" aria-labelledby="events-tab">
