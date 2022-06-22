@@ -3,7 +3,7 @@
 @section('title', 'Mijn feed')
 
 @section('content')
-    <div class="container mt-32">
+    <div class="container mt-36">
         <div class="flex flex-col justify-center">
             <div class="rounded-full bg-white m-10 mt-0">
                 <ul class="flex" id="tabs" data-tabs-toggle="#tab-content" role="tablist">
@@ -19,7 +19,7 @@
                 <div class="scrollable" id="tab-content">
                     <div class="hidden flex flex-col justify-center" id="events" role="tabpanel" aria-labelledby="events-tab">
                         @forelse($events as $event)
-                            <div class="bg-white rounded-2xl m-10 mb-0 {{ $loop->last ? 'mb-96' : null }}">
+                            <div class="bg-white rounded-2xl m-10 mb-0 {{ $loop->last ? 'mb-32' : null }}">
                                 @include('partials.event', ['event' => $event])
                             </div>
                         @empty
@@ -56,7 +56,7 @@
                             <hr class="mx-10 mt-5 h-1 bg-white rounded-full" />
                         @endif
                         @foreach($activities as $activity)
-                            <div class="bg-white rounded-lg flex flex-col mx-10 mt-5 p-4 {{ $loop->last ? 'mb-96' : null }}">
+                            <div class="bg-white rounded-lg flex flex-col mx-10 mt-5 p-4 {{ $loop->last ? 'mb-32' : null }}">
                                 <div class="text-left">
                                     <span class="wcd-blue">{{ $activity->causer?->name ?: '<naam>' }}</span>
                                 </div>
