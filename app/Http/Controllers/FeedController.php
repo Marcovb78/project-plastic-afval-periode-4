@@ -31,12 +31,12 @@ class FeedController extends Controller
         $activities = $user->activities;
 
         $events = Event::whereToCome()
-            ->whereNotFull()
-            ->whereNotIn('id', $user->events->pluck('id')->toArray())
+            ->orderBy('from_date', 'ASC')
             ->get();
 
         $joinedEvents = $user->events()
             ->whereToCome()
+            ->orderBy('from_date', 'ASC')
             ->get();
 
         return view('feed.index')

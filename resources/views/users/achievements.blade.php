@@ -5,11 +5,11 @@
 @section('title', 'Prestaties')
 
 @section('content')
-    <div class="flex flex-col justify-center items-center mt-16 mb-20">
+    <div class="flex flex-col justify-center items-center mt-16 mb-20 article-scroll">
         @include('users.partials.header')
-        <div class="flex flex-col justify-center">
-            <div class="bg-white rounded-lg m-10 mt-4 p-4 px-10 feed-scroll ">
-                <div class="scrollable">
+        <div class="scrollable">
+            <div class="flex flex-col justify-center">
+                <div class="bg-white rounded-lg m-6 p-4 px-10">
                     @forelse(auth()->user()->achievements as $achievement)
                         <div class="flex justify-between">
                             <div class="flex flex-col">

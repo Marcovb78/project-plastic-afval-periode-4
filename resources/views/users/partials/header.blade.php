@@ -4,6 +4,11 @@
             <img src="/images/icons/friend-add.svg" class="w-10 h-10" />
         </a>
     </div>
+    <div class="absolute top-12 left-6">
+        <a href="{{ route('user.settings') }}">
+            <img src="/images/icons/settings.svg" class="w-10 h-10" />
+        </a>
+    </div>
     <a href="{{ route('user.profile') }}">
         <img src="{{ auth()->user()->profile_picture }}"
              class="rounded-full {{ auth()->user()->picture ? null : 'bg-slate-400' }} w-36 h-36"
