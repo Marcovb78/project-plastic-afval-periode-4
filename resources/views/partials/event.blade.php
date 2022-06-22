@@ -1,6 +1,18 @@
 <div class="relative">
     <img class="object-cover rounded-t-2xl bg-center max-h-36 w-full" src="{{ $event->image ?: 'https://via.placeholder.com/500' }}" alt="{{ $event->name }}" />
-    @if(!isset($withoutJoin) || !$withoutJoin)
+    @if(auth()->id() == $event->user_id)
+        <div class="absolute top-1 right-1">
+            <div class="rounded-full bg-red-500 py-1 px-3">
+                <span class="font-bold text-white text-sm">Van jou</span>
+            </div>
+        </div>
+    @elseif($event->users()->where('user_id', auth()->id())->count() > 0)
+        <div class="absolute top-1 right-1">
+            <div class="rounded-full bg-green-500 py-1 px-3">
+                <span class="font-bold text-white text-sm">Gejoined</span>
+            </div>
+        </div>
+    @elseif((!isset($withoutJoin) || !$withoutJoin) && $event->user_id != auth()->id())
         <a href="{{ route('events.join', [ 'event' => $event->id ]) }}" class="absolute right-3 bottom--5">
             <div class="rounded-3xl px-4 py-2 flex flex-row items-center gap-4 bg-yellow-300">
                 <div class="">

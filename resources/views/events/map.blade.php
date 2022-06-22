@@ -30,7 +30,7 @@
 
                                 <div class="">
                                     <div class="border-b @error('title') border-red-400 @else border-gray-400 @enderror">
-                                        <input class="border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" id="title" type="text" placeholder="Titel" name="title" required />
+                                        <input class="border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" id="title" type="text" placeholder="Titel" name="title" value="{{ old('title') }}" required />
                                     </div>
                                     @error('title')
                                         <span class="text-red-400 text-sm">{{ $message }}</span>
@@ -39,7 +39,7 @@
 
                                 <div class="">
                                     <div class="border-b @error('description') border-red-400 @else border-gray-400 @enderror">
-                                        <input class="border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" id="description" type="text" placeholder="Beschrijving" name="description" required />
+                                        <input class="border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" id="description" type="text" placeholder="Beschrijving" name="description" value="{{ old('description') }}" required />
                                     </div>
                                     @error('description')
                                         <span class="text-red-400 text-sm">{{ $message }}</span>
@@ -48,7 +48,7 @@
 
                                 <div class="">
                                     <div class="border-b @error('city') border-red-400 @else border-gray-400 @enderror">
-                                        <input class="border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" id="city" type="text" placeholder="Plaats" name="city" required />
+                                        <input class="border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" id="city" type="text" placeholder="Plaats" name="city" value="{{ old('city') }}" required />
                                     </div>
                                     @error('city')
                                         <span class="text-red-400 text-sm">{{ $message }}</span>
@@ -57,7 +57,7 @@
 
                                 <div class="">
                                     <div class="border-b @error('spots') border-red-400 @else border-gray-400 @enderror">
-                                        <input class="border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" id="spots" type="number" placeholder="Max aantal deelnemers" name="spots" required />
+                                        <input class="border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" id="spots" type="number" placeholder="Max aantal deelnemers" name="spots" value="{{ old('spots') }}" required />
                                     </div>
                                     @error('spots')
                                         <span class="text-red-400 text-sm">{{ $message }}</span>
@@ -70,7 +70,7 @@
 
                                 <div class="">
                                     <div class="border-b @error('from_date') border-red-400 @else border-gray-400 @enderror">
-                                        <input class="flatpickr border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" type="text" name="from_date" placeholder="Start datum + tijd" readonly required />
+                                        <input class="flatpickr border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" type="text" name="from_date" placeholder="Start datum + tijd" value="{{ old('from_date') }}" readonly required />
                                     </div>
                                     @error('from_date')
                                         <span class="text-red-400 text-sm">{{ $message }}</span>
@@ -79,7 +79,7 @@
 
                                 <div class="">
                                     <div class="border-b @error('to_date') border-red-400 @else border-gray-400 @enderror">
-                                        <input class="flatpickr border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" type="text" name="to_date" placeholder="Eind datum + tijd" readonly required />
+                                        <input class="flatpickr border-transparent pl-0 pt-0 focus:border-transparent focus:ring-0" type="text" name="to_date" placeholder="Eind datum + tijd" value="{{ old('to_date') }}" readonly required />
                                     </div>
                                     @error('to_date')
                                         <span class="text-red-400 text-sm">{{ $message }}</span>
@@ -128,6 +128,7 @@
         flatpickr('.flatpickr', {
             enableTime: true,
             time_24hr: true,
+            minDate: new Date(),
         })
     </script>
     <script type="text/javascript">
@@ -141,11 +142,13 @@
 
         events.forEach((event) => {
             let markerIcon = L.icon({
-                iconUrl: (event.has_joined
-                    ? '/images/icons/pin-joined.svg'
-                    : (event.owner_is_friend
-                        ? '/images/icons/pin-friends.svg'
-                        : '/images/icons/pin-available.svg')),
+                iconUrl: (event.user_id == "{{ auth()->id() }}"
+                    ? '/images/icons/pin-mine.svg'
+                    : (event.has_joined
+                        ? '/images/icons/pin-joined.svg'
+                        : (event.owner_is_friend
+                            ? '/images/icons/pin-friends.svg'
+                            : '/images/icons/pin-available.svg'))),
                 iconSize: [32, 32],
                 popupAnchor: [0, -10],
             });
@@ -161,7 +164,7 @@
                         "</div>"+
                         "<div class='font-bold text-xl'>"+ event.title +"</div>"+
                         "<div>"+ event.description +"</div>"+
-                        (! event.has_joined
+                        (! event.has_joined && event.user_id != "{{ auth()->id() }}"
                             ? "<div class='flex justify-end'>"+
                                 "<a class='mt-1' href='/events/"+ event.id +"/join'>"+
                                     "<div class='rounded-3xl px-4 py-2 flex flex-row items-center gap-4 bg-yellow-300'>"+
