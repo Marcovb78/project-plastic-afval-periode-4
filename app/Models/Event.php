@@ -49,6 +49,14 @@ class Event extends Model
     }
 
     /**
+     * Scope a query to exclude events from the authenticated user.
+     */
+    public function scopeExcludeAuthUser(Builder $builder)
+    {
+        return $builder->where('user_id', '!=', auth()->id());
+    }
+
+    /**
      * Get the user that belongs to this event.
      */
     public function user()

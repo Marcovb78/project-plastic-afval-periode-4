@@ -5,7 +5,7 @@
 @section('title', 'Nieuws')
 
 @section('content')
-<div class="container mt-24 article-scroll">
+<div class="container mt-24 feed-scroll">
     <div class="scrollable">
         <div class="flex flex-col justify-center article">
             @foreach($articles as $article)

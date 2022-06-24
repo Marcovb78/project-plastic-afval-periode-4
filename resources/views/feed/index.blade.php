@@ -3,8 +3,9 @@
 @section('title', 'Mijn feed')
 
 @section('content')
-    <div class="container mt-32">
+    <div class="container mt-36">
         <div class="flex flex-col justify-center">
+
             <div class="rounded-full bg-white m-10 mt-0">
                 <ul class="flex" id="tabs" data-tabs-toggle="#tab-content" role="tablist">
                     <li class="basis-1/2 text-center" role="presentation">
@@ -15,15 +16,16 @@
                     </li>
                 </ul>
             </div>
+
             <div class="feed-scroll">
                 <div class="scrollable" id="tab-content">
                     <div class="hidden flex flex-col justify-center" id="events" role="tabpanel" aria-labelledby="events-tab">
                         @forelse($events as $event)
-                            <div class="bg-white rounded-2xl m-10 mb-0 {{ $loop->last ? 'mb-96' : null }}">
+                            <div class="bg-white rounded-2xl m-10 mb-0 {{ $loop->first ? 'mt-0' : 'mt-4' }} {{ $loop->last ? 'mb-96' : null }}">
                                 @include('partials.event', ['event' => $event])
                             </div>
                         @empty
-                            <div class="bg-white rounded-2xl m-10 mb-0 p-4">
+                            <div class="bg-white rounded-2xl m-10 mt-0 mb-0 p-4">
                                 <p class="font-bold">Er zijn geen evenementen beschikbaar op dit moment.</p>
                             </div>
                         @endforelse
@@ -48,7 +50,7 @@
                             <hr class="mx-10 mt-5 h-1 bg-white rounded-full" />
                         @endif
                         @foreach($joinedEvents as $event)
-                            <div class="bg-white rounded-2xl mx-10 mt-5 {{ $loop->last ? 'mb-96' : null }}">
+                            <div class="bg-white rounded-2xl mx-10 mt-4">
                                 @include('partials.event', ['event' => $event, 'withoutJoin' => true])
                             </div>
                         @endforeach

@@ -17,24 +17,12 @@ class EventsTableSeeder extends Seeder
     {
         Event::create([
             'user_id' => 2,
-            'title' => 'Ploggen in <span class="wcd-pink">Het Appelhof</span>',
-            'description' => 'Kom ploggen in Het Appelhof. En neem een vuilniszak en loopschoenen mee.',
-            'total_spots' => 10,
-            'longitude' => '53.3302486',
-            'latitude' => '6.5213962',
-            'image' => '',
-            'from_date' => now()->addDays(1),
-            'to_date' => now()->addDays(1)->addHours(2),
-        ]);
-
-        Event::create([
-            'user_id' => 2,
             'title' => 'Suppen in <span class="wcd-pink">Het Winsumerdiep</span>',
-            'description' => 'Lekker suppen in het Winsumerdiep ofzo.',
+            'description' => 'Lekker suppen in het Winsumerdiep.',
             'total_spots' => 5,
             'longitude' => '53.334511',
             'latitude' => '6.532379',
-            'image' => '',
+            'image' => 'https://waddenland.groningen.nl/uploads/illustraties/fb615be2-06f2-5df0-a11b-4fa0d7ac5e2c/3159220180/Bootje%20Winsumerdiep-%20Groeten%20uit%20Groningen%20Wilco%20van%20der%20Laan.jpg',
             'from_date' => now()->addDays(2),
             'to_date' => now()->addDays(2)->addHours(2),
         ]);
@@ -46,31 +34,31 @@ class EventsTableSeeder extends Seeder
             'total_spots' => 8,
             'longitude' => '52.809144',
             'latitude' => '6.379235',
-            'image' => '',
+            'image' => 'https://cdn.quicq.io/travelaar/2020/08/ua-plankenpad-dwingelderveld.jpg',
             'from_date' => now()->addDays(3),
             'to_date' => now()->addDays(3)->addHours(2),
         ]);
 
         Event::create([
             'user_id' => 3,
-            'title' => 'Zuipen op <span class="wcd-pink">Studentenvereniging Unitas</span>',
-            'description' => 'Kom lekker zuipen op Studentenvereniging Unitas. Neem gerust een vriend/vriendin mee!',
+            'title' => 'Ploggen op <span class="wcd-pink">Stadsstrand Groningen</span>',
+            'description' => 'Kom gezellig ploggen bij het stadsstrand Groningen.',
             'total_spots' => 12,
             'longitude' => '53.2162379',
             'latitude' => '6.5386726',
-            'image' => '',
+            'image' => 'https://media.insiders.nl/thumbs/detail/800x800/gro/files/image/4b359a1ab5f64d89e3074988a68571d2ea159625.jpeg',
             'from_date' => now()->addDays(4),
             'to_date' => now()->addDays(4)->addHours(2),
         ]);
 
         Event::create([
             'user_id' => 4,
-            'title' => 'Voetballen in <span class="wcd-pink">Uithuizen</span>',
-            'description' => 'Een balletje trappen op het voetbalveld in Uithuizen.',
+            'title' => 'Wandelen in <span class="wcd-pink">Uithuizen</span>',
+            'description' => 'Wandeling rond het dorp van Uithuizen.',
             'total_spots' => 4,
             'longitude' => '53.4038876',
             'latitude' => '6.6712087',
-            'image' => '',
+            'image' => 'http://d3e1m60ptf1oym.cloudfront.net/7aa6603f-bf19-4459-a842-2f7a70643c05/hollandluchtfoto-uithuizen-menkemaborg_xgaplus.jpg',
             'from_date' => now()->addDays(5),
             'to_date' => now()->addDays(5)->addHours(4),
         ]);
